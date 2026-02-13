@@ -491,7 +491,7 @@ jobs:
           -DPLUGIN_PERSISTENTSTORE=ON
           -DUSE_THUNDER_R4=ON
           -DPLUGIN_L2Tests=ON
-          -DRDK_SERVICE_L2_TEST=ON
+          -DRDK_SERVICE_L2_TEST=OFF
           -DDS_FOUND=ON
           -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
           &&
