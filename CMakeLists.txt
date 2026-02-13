@@ -39,15 +39,7 @@ string(TOLOWER ${NAMESPACE} STORAGE_DIRECTORY)
 # for writing pc and config files
 include(CmakeHelperFunctions)
 
-if(RDK_SERVICE_L2_TEST)
-    add_subdirectory(Tests/L2Tests)
-endif()
-
 option(DISABLE_SECURITY_TOKEN "Disable security token" OFF)
-
-if(RDK_SERVICES_L1_TEST)
-    add_subdirectory(Tests/L1Tests)
-endif()
 
 if(DISABLE_SECURITY_TOKEN)
     add_definitions(-DDISABLE_SECURITY_TOKEN)
@@ -55,6 +47,14 @@ endif()
 
 if(PLUGIN_TELEMETRY)
     add_subdirectory(plugin)
+endif()
+
+if(RDK_SERVICES_L1_TEST)
+    add_subdirectory(Tests/L1Tests)
+endif()
+
+if(RDK_SERVICE_L2_TEST)
+    add_subdirectory(Tests/L2Tests)
 endif()
 
 if(WPEFRAMEWORK_CREATE_IPKG_TARGETS)
