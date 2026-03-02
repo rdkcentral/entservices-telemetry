@@ -111,7 +111,6 @@ namespace Plugin {
 
         do {
             auto pluginInterface = controller->QueryInterfaceByCallsign<INTERFACE>(callsign.c_str());
-
             if (pluginInterface) {
                 LOGINFO("plugin interface succeed and retry count: %d",count);
                 return pluginInterface;
@@ -190,7 +189,6 @@ namespace Plugin {
         PluginInterfaceRef<INTERFACE> createInterface()
         {
             auto* interface = ::WPEFramework::Plugin::createInterface<INTERFACE>(*this);
-
             if (!interface) {
                 LOGERR("Failed to create plugin interface for %s", _callsign.c_str());
             }

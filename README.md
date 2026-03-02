@@ -1,2 +1,2 @@
-# template
-Template repository with common workflows for future clone
+# entservices-telemetry
+Telemetry plugin repository for RDK Enterprise Services
