@@ -25,6 +25,7 @@
 
 #include "rfcapi.h"
 #include <fstream>
+#include <stdio.h>
 
 #ifdef HAS_RBUS
 #include "rbus.h"
@@ -149,6 +150,7 @@ namespace Plugin {
 
         _adminLock.Unlock();
 
+        printf("Test coverity workflow %p, status: %d\n");
         return status;
     }
 
