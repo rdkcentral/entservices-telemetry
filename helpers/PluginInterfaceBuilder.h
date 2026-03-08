@@ -38,12 +38,12 @@ namespace Plugin {
 
     public:
         PluginInterfaceRef()
-            : _interface(nullptr)
+            : _interface(nullptr), _service(nullptr)
         {
         }
 
         PluginInterfaceRef(INTERFACE* interface, PluginHost::IShell* controller)
-            : _interface(interface)
+            : _interface(interface), _service(controller)
         {
         }
 
@@ -58,9 +58,10 @@ namespace Plugin {
 
         // use move
         PluginInterfaceRef(PluginInterfaceRef&& other)
-            : _interface(other._interface)
+            : _interface(other._interface), _service(other._service)
         {
             other._interface = nullptr;
+            other._service = nullptr;
         }
 
         PluginInterfaceRef& operator=(PluginInterfaceRef&& other)
@@ -111,6 +112,7 @@ namespace Plugin {
 
         do {
             auto pluginInterface = controller->QueryInterfaceByCallsign<INTERFACE>(callsign.c_str());
+
             if (pluginInterface) {
                 LOGINFO("plugin interface succeed and retry count: %d",count);
                 return pluginInterface;
@@ -189,6 +191,7 @@ namespace Plugin {
         PluginInterfaceRef<INTERFACE> createInterface()
         {
             auto* interface = ::WPEFramework::Plugin::createInterface<INTERFACE>(*this);
+
             if (!interface) {
                 LOGERR("Failed to create plugin interface for %s", _callsign.c_str());
             }
@@ -197,12 +200,12 @@ namespace Plugin {
             return std::move(PluginInterfaceRef<INTERFACE>(interface, _service));
         }
 
-        const uint32_t retryInterval() const
+        uint32_t retryInterval() const
         {
             return _retry_interval;
         }
 
-        const int retryCount() const
+        int retryCount() const
         {
             return _retry_count;
         }
