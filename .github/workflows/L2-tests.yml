@@ -416,7 +416,7 @@ jobs:
           -DHAS_API_POWERSTATE
           -DENABLE_TELEMETRY_LOGGING
           -DENABLE_THERMAL_PROTECTION
-          -Dt2_event_d(...)="
+          -Dt2_event_d\(...\)="
           -DPLUGIN_PERSISTENTSTORE_PATH="/tmp/secure/persistent/rdkservicestore"
           -DPLUGIN_PERSISTENTSTORE_LEGACYPATH="/tmp/persistent/rdkservicestore"
           -DCOMCAST_CONFIG=OFF
