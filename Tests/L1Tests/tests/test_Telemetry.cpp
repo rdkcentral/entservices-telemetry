@@ -286,7 +286,7 @@ TEST_F(TelemetryTest, Plugin)
     EXPECT_CALL(*p_telemetryApiImplMock, t2_event_s(::testing::_, ::testing::_))
         .Times(1)
         .WillOnce(::testing::Invoke(
-            [](char* marker, char* value) {
+            [](const char* marker, const char* value) {
                 EXPECT_EQ(string(marker), _T("NAME"));
                 EXPECT_EQ(string(value), _T("VALUE"));
                 return T2ERROR_SUCCESS;
