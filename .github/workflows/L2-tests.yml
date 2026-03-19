@@ -414,6 +414,7 @@ jobs:
           -DUSE_IARMBUS
           -DRDK_SERVICE_L2_TEST
           -DHAS_API_POWERSTATE
+          -DENABLE_TELEMETRY_LOGGING
           -DENABLE_THERMAL_PROTECTION"
           -DPLUGIN_PERSISTENTSTORE_PATH="/tmp/secure/persistent/rdkservicestore"
           -DPLUGIN_PERSISTENTSTORE_LEGACYPATH="/tmp/persistent/rdkservicestore"
@@ -423,6 +424,7 @@ jobs:
           -DCMAKE_DISABLE_FIND_PACKAGE_Udev=ON
           -DCMAKE_DISABLE_FIND_PACKAGE_RFC=ON
           -DCMAKE_DISABLE_FIND_PACKAGE_RBus=ON
+          -DCMAKE_DISABLE_FIND_PACKAGE_Telemetry=ON
           -DPLUGIN_SYSTEMSERVICES=ON
           -DUSE_THUNDER_R4=ON
           -DPLUGIN_L2Tests=ON
