@@ -17,6 +17,7 @@
 * limitations under the License.
 **/
 
+
 #include "TelemetryImplementation.h"
 
 #include "UtilsJsonRpc.h"
@@ -55,6 +56,7 @@ static rbusHandle_t rbusHandle;
 
 #endif
 using PowerState = WPEFramework::Exchange::IPowerManager::PowerState;
+
 
 namespace WPEFramework {
 namespace Plugin {
