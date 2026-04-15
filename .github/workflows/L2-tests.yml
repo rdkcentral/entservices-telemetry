@@ -100,7 +100,7 @@ jobs:
         with:
           repository: rdkcentral/entservices-telemetry
           path: entservices-telemetry
-          ref: topic/RDKEMW-13480
+          ref: develop
 
       - name: Checkout entservices-systemservices
         uses: actions/checkout@v3
@@ -135,8 +135,7 @@ jobs:
         with:
           repository: rdkcentral/entservices-testframework
           path: entservices-testframework
-          ref: feature/RDKEMW-12937_1
-          token: ${{ secrets.RDKCM_RDKE }}
+          ref: 1.0.1
 
       - name: Checkout googletest
         if: steps.cache.outputs.cache-hit != 'true'
@@ -393,6 +392,7 @@ jobs:
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Iarm.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Rfc.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/RBus.h
+          -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Telemetry.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Udev.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Wraps.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/maintenanceMGR.h
@@ -413,6 +413,7 @@ jobs:
           -DUSE_IARMBUS
           -DRDK_SERVICE_L2_TEST
           -DHAS_API_POWERSTATE
+          -DENABLE_TELEMETRY_LOGGING
           -DENABLE_THERMAL_PROTECTION"
           -DPLUGIN_PERSISTENTSTORE_PATH="/tmp/secure/persistent/rdkservicestore"
           -DPLUGIN_PERSISTENTSTORE_LEGACYPATH="/tmp/persistent/rdkservicestore"
@@ -422,6 +423,7 @@ jobs:
           -DCMAKE_DISABLE_FIND_PACKAGE_Udev=ON
           -DCMAKE_DISABLE_FIND_PACKAGE_RFC=ON
           -DCMAKE_DISABLE_FIND_PACKAGE_RBus=ON
+          -DCMAKE_DISABLE_FIND_PACKAGE_Telemetry=ON
           -DPLUGIN_SYSTEMSERVICES=ON
           -DUSE_THUNDER_R4=ON
           -DPLUGIN_L2Tests=ON
@@ -465,6 +467,7 @@ jobs:
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Iarm.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Rfc.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/RBus.h
+          -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Telemetry.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Udev.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Wraps.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/maintenanceMGR.h
@@ -540,6 +543,7 @@ jobs:
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Iarm.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Rfc.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/RBus.h
+          -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Telemetry.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Udev.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Wraps.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/maintenanceMGR.h
@@ -615,6 +619,7 @@ jobs:
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Iarm.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Rfc.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/RBus.h
+          -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Telemetry.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Udev.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Wraps.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/maintenanceMGR.h
@@ -696,6 +701,7 @@ jobs:
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Iarm.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Rfc.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/RBus.h
+          -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Telemetry.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Udev.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Wraps.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/libusb/libusb.h
@@ -782,6 +788,7 @@ jobs:
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Iarm.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Rfc.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/RBus.h
+          -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Telemetry.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Udev.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Wraps.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/maintenanceMGR.h
