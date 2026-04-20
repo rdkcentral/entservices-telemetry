@@ -17,7 +17,6 @@
 * limitations under the License.
 **/
 
-
 #include "TelemetryImplementation.h"
 
 #include "UtilsJsonRpc.h"
