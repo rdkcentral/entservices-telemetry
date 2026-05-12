@@ -24,6 +24,7 @@ set(PLUGIN_T2_PERSISTENT_FOLDER /opt/.t2reportprofiles/ CACHE STRING "Path to t2
 set(PLUGIN_DEFAULT_PROFILES_FILE /etc/t2profiles/default.json CACHE STRING "Path to default t2 profile")
 
 find_package(${NAMESPACE}Plugins REQUIRED)
+find_package(${NAMESPACE}Helpers REQUIRED)
 
 add_library(${MODULE_NAME} SHARED
         Telemetry.cpp
@@ -33,10 +34,9 @@ set_target_properties(${MODULE_NAME} PROPERTIES
         CXX_STANDARD 11
         CXX_STANDARD_REQUIRED YES)
 
-include_directories(
-        ../helpers)
-
-target_link_libraries(${MODULE_NAME} PRIVATE ${NAMESPACE}Plugins::${NAMESPACE}Plugins)
+target_link_libraries(${MODULE_NAME} PRIVATE
+        ${NAMESPACE}Plugins::${NAMESPACE}Plugins
+        ${NAMESPACE}::${NAMESPACE}Helpers)
 
 install(TARGETS ${MODULE_NAME}
         DESTINATION lib/${STORAGE_DIRECTORY}/plugins)
@@ -86,8 +86,13 @@ if (NOT ${SEC_UTIL_LIB} STREQUAL "SEC_UTIL_LIB-NOTFOUND")
     set(SEC_UTIL_LIBRARIES ${SEC_UTIL_LIB})
 endif()
 
-target_include_directories(${PLUGIN_IMPLEMENTATION} PRIVATE ${RFC_INCLUDE_DIRS} ${RBUS_API_HEADERS} ../helpers)
-target_link_libraries(${PLUGIN_IMPLEMENTATION} PRIVATE ${NAMESPACE}Plugins::${NAMESPACE}Plugins ${RFC_LIBRARIES} ${RBUS_LIBRARIES} ${SEC_UTIL_LIBRARIES})
+target_include_directories(${PLUGIN_IMPLEMENTATION} PRIVATE ${RFC_INCLUDE_DIRS} ${RBUS_API_HEADERS})
+target_link_libraries(${PLUGIN_IMPLEMENTATION} PRIVATE
+        ${NAMESPACE}Plugins::${NAMESPACE}Plugins
+        ${RFC_LIBRARIES}
+        ${RBUS_LIBRARIES}
+        ${SEC_UTIL_LIBRARIES}
+        ${NAMESPACE}::${NAMESPACE}Helpers)
 
 install(TARGETS ${PLUGIN_IMPLEMENTATION}
         DESTINATION lib/${STORAGE_DIRECTORY}/plugins)
