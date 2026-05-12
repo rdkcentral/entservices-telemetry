@@ -10,7 +10,6 @@ on:
     secrets:
       RDKCM_RDKE:
         required: true
-        
 
 env:
   BUILD_TYPE: Debug
