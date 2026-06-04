@@ -466,6 +466,7 @@ jobs:
           cmake --build build/entservices-systemservices
           &&
           cmake --install build/entservices-systemservices
+          
       - name: Build entservices-usersettings
         run: >
           cmake
