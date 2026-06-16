@@ -135,7 +135,7 @@ jobs:
         with:
           repository: rdkcentral/entservices-testframework
           path: entservices-testframework
-          ref: Test_PR
+          ref: 1.0.14
 
       - name: Checkout googletest
         if: steps.cache.outputs.cache-hit != 'true'
@@ -186,6 +186,7 @@ jobs:
           patch -p1 < $GITHUB_WORKSPACE/entservices-testframework/patches/RDKEMW-733-Add-ENTOS-IDS.patch
           patch -p1 < $GITHUB_WORKSPACE/entservices-testframework/patches/Jsonrpc_dynamic_error_handling.patch
           patch -p1 < $GITHUB_WORKSPACE/entservices-testframework/patches/Increase_Timout_For_L2Tests_Plugin.patch
+          sed -i 's/ERROR_CODE(ERROR_FAILED_UNREGISTERED, 49) \\/ERROR_CODE(ERROR_FAILED_UNREGISTERED, 49) \\\n        ERROR_CODE(ERROR_ABORTED, 50) \\/' Source/core/Portability.h
           cd -
       - name: Build Thunder
         run: >
