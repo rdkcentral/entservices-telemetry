@@ -132,7 +132,7 @@ jobs:
         with:
           repository: rdkcentral/entservices-testframework
           path: entservices-testframework
-          ref: 1.0.14
+          ref: 1.0.17
 
       - name: Checkout googletest
         if: steps.cache.outputs.cache-hit != 'true'
@@ -141,18 +141,6 @@ jobs:
           repository: google/googletest
           path: googletest
           ref: v1.15.0
-
-      # Fetching only the required essos-resmgr.h file from the Westeros repo to avoid full repo clone and to remove header file dependency
-      - name: Fetch only essos-resmgr.h from Westeros repo using sparse-checkout
-        run: |
-          mkdir -p $GITHUB_WORKSPACE/westeros-minimal
-          cd $GITHUB_WORKSPACE/westeros-minimal
-          git init
-          git remote add origin https://code.rdkcentral.com/r/components/opensource/westeros
-          git config core.sparseCheckout true
-          git pull --depth=1 origin master
-          mkdir -p $GITHUB_WORKSPACE/entservices-telemetry/ResourceManager
-          cp essos/essos-resmgr.h $GITHUB_WORKSPACE/entservices-telemetry/ResourceManager/
 
       - name: Apply patches ThunderTools
         run: |  
@@ -646,6 +634,7 @@ jobs:
           -I $GITHUB_WORKSPACE/entservices-testframework/Tests/headers/systemservices/proc
           -I $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks
           -I $GITHUB_WORKSPACE/install/usr/include
+          -I $GITHUB_WORKSPACE/entservices-helpers/helpers
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/devicesettings.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Iarm.h
           -include $GITHUB_WORKSPACE/entservices-testframework/Tests/mocks/Rfc.h
