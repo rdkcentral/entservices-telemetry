@@ -56,6 +56,7 @@ static rbusHandle_t rbusHandle;
 #endif
 using PowerState = WPEFramework::Exchange::IPowerManager::PowerState;
 
+
 namespace WPEFramework {
 namespace Plugin {
 
