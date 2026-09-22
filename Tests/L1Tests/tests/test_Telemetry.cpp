@@ -40,7 +40,7 @@ const string t2PpersistentFolder = _T("/tmp/.t2reportprofiles/");
 const uint8_t profileContent[] = "{\"profile\":\"default\"}";
 }
 
-using namespace WPEFramework;
+using namespace Thunder;
 using ::testing::NiceMock;
 
 class TelemetryTest : public ::testing::Test {

@@ -54,9 +54,9 @@ static rbusError_t rbusHandleStatus = RBUS_ERROR_NOT_INITIALIZED;
 static rbusHandle_t rbusHandle;
 
 #endif
-using PowerState = WPEFramework::Exchange::IPowerManager::PowerState;
+using PowerState = Thunder::Exchange::IPowerManager::PowerState;
 
-namespace WPEFramework {
+namespace Thunder {
 namespace Plugin {
 
     SERVICE_REGISTRATION(TelemetryImplementation, 1, 0);
@@ -156,7 +156,7 @@ namespace Plugin {
     {
          ASSERT(_service != nullptr);
 
-         _userSettingsPlugin = _service->QueryInterfaceByCallsign<WPEFramework::Exchange::IUserSettings>(USERSETTINGS_CALLSIGN);
+         _userSettingsPlugin = _service->QueryInterfaceByCallsign<Thunder::Exchange::IUserSettings>(USERSETTINGS_CALLSIGN);
          if (_userSettingsPlugin)
          {
              _userSettingsPlugin->Register(&_userSettingsNotification);
@@ -370,15 +370,15 @@ namespace Plugin {
     {
         JsonObject params;
 
-        if (WPEFramework::Exchange::IPowerManager::POWER_STATE_STANDBY == newState ||
-            WPEFramework::Exchange::IPowerManager::POWER_STATE_STANDBY_LIGHT_SLEEP == newState)
+        if (Thunder::Exchange::IPowerManager::POWER_STATE_STANDBY == newState ||
+            Thunder::Exchange::IPowerManager::POWER_STATE_STANDBY_LIGHT_SLEEP == newState)
         {
-            if (WPEFramework::Exchange::IPowerManager::POWER_STATE_ON == currentState)
+            if (Thunder::Exchange::IPowerManager::POWER_STATE_ON == currentState)
             {
                 Core::IWorkerPool::Instance().Submit(Job::Create( this,TELEMETRY_EVENT_UPLOADREPORT, params));
             }
         }
-        else if(WPEFramework::Exchange::IPowerManager::POWER_STATE_STANDBY_DEEP_SLEEP == newState)
+        else if(Thunder::Exchange::IPowerManager::POWER_STATE_STANDBY_DEEP_SLEEP == newState)
         {
             Core::IWorkerPool::Instance().Submit(Job::Create( this,TELEMETRY_EVENT_ABORTREPORT, params));
         }
@@ -581,4 +581,4 @@ namespace Plugin {
         return Core::ERROR_NONE;
     }
 } // namespace Plugin
-} // namespace WPEFramework
+} // namespace Thunder

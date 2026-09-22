@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Telemetry plugin is a Thunder (WPEFramework) plugin that provides telemetry data collection, reporting, and management capabilities for RDK devices. It enables the collection of device metrics, application events, and system telemetry data, which can be uploaded to backend servers for analysis and monitoring.
+The Telemetry plugin is a Thunder plugin that provides telemetry data collection, reporting, and management capabilities for RDK devices. It enables the collection of device metrics, application events, and system telemetry data, which can be uploaded to backend servers for analysis and monitoring.
 
 ## System Architecture
 

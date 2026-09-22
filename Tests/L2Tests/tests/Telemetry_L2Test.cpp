@@ -38,11 +38,11 @@
 #define TELEMETRYL2TEST_CALLSIGN _T("L2tests.1")
 
 using ::testing::NiceMock;
-using namespace WPEFramework;
+using namespace Thunder;
 using testing::StrictMock;
-using ::WPEFramework::Exchange::ITelemetry;
-using Success = WPEFramework::Exchange::ITelemetry::TelemetrySuccess;
-using PowerState = WPEFramework::Exchange::IPowerManager::PowerState;
+using ::Thunder::Exchange::ITelemetry;
+using Success = Thunder::Exchange::ITelemetry::TelemetrySuccess;
+using PowerState = Thunder::Exchange::IPowerManager::PowerState;
 
 namespace {
 static void removeFile(const char* fileName)

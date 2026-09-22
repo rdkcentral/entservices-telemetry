@@ -206,7 +206,7 @@ For system-level communication:
 ## Deployment Considerations
 
 ### Prerequisites
-- Thunder/WPEFramework R4.4+ installed
+- Thunder R4.4+ installed
 - T2 telemetry service configured and running
 - RBUS daemon available (optional but recommended)
 - RFC configuration service accessible
