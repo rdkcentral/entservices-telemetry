@@ -1,8 +1,7 @@
 precondition = ["Platform"]
 callsign = "org.rdk.Telemetry"
-autostart = "false"
 startuporder = "@PLUGIN_TELEMETRY_STARTUPORDER@"
-
+autostart = "@PLUGIN_TELEMETRY_AUTOSTART@"
 configuration = JSON()
 rootobject = JSON()
 
