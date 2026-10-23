@@ -24,7 +24,7 @@ set(PLUGIN_T2_PERSISTENT_FOLDER /opt/.t2reportprofiles/ CACHE STRING "Path to t2
 set(PLUGIN_DEFAULT_PROFILES_FILE /etc/t2profiles/default.json CACHE STRING "Path to default t2 profile")
 
 find_package(${NAMESPACE}Plugins REQUIRED)
-find_package(${NAMESPACE}Helpers REQUIRED)
+find_package(${NAMESPACE}Helpers CONFIG REQUIRED)
 
 add_library(${MODULE_NAME} SHARED
         Telemetry.cpp
