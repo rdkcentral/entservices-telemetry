@@ -81,7 +81,7 @@ endif()
 find_package(IARMBus)
 
 set(SEC_UTIL_LIBRARIES "")
-find_library(SEC_UTIL_LIB NAMES ThunderSecurityUtil)
+find_library(SEC_UTIL_LIB NAMES ${NAMESPACE}SecurityUtil)
 if (NOT ${SEC_UTIL_LIB} STREQUAL "SEC_UTIL_LIB-NOTFOUND")
     set(SEC_UTIL_LIBRARIES ${SEC_UTIL_LIB})
 endif()
